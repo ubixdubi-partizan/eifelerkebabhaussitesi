@@ -138,7 +138,7 @@
     ".admin-entry span": "Y\u00f6netici giri\u015fi",
     "#admin-login-open": "Giri\u015f yap",
     ".mobile-cta a:first-child": "Yol tarifi al",
-    ".mobile-cta a:last-child": "Hemen ara",
+    ".mobile-cta a:last-child": "WhatsApp",
     ".menu-widget-label": "EIFELER KEBAPHAUS \u00b7 MEN\u00dc",
     ".menu-search-clear": "\u00d7",
     ".menu-disclaimer": "Men\u00fc se\u00e7imleri ve fiyatlar Euro cinsindendir. Alerjenleri ve katk\u0131 maddelerini ekibimize sorabilirsiniz.",
