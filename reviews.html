@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Misafir yorumları | Eifeler Kebaphaus Monschau</title>
+  <meta name="description" content="Eifeler Kebaphaus Monschau için fotoğraflı misafir yorumu gönderin." />
+  <link rel="canonical" href="https://www.eifelerkebabhaus.site/reviews.html" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .reviews-page{max-width:860px;margin:0 auto;padding:7rem 0 5rem}.reviews-page-head{margin-bottom:2rem}.reviews-page-head p,.review-admin-note{color:var(--muted);max-width:650px}.reviews-page-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.review-submit-card,.review-admin-card{background:linear-gradient(145deg,#2d1b16,#17100e);border:1px solid #f4a34055;border-radius:22px;padding:1.4rem;box-shadow:0 20px 60px #0007}.review-submit-card form{display:grid;gap:.55rem}.review-submit-card label{font-size:.72rem;color:var(--muted)}.review-submit-card input,.review-submit-card textarea{width:100%;border:1px solid #ffffff20;border-radius:10px;background:#100d0c;color:var(--cream);font:inherit;padding:.7rem}.review-submit-card input[type=file]{padding:.55rem}.review-submit-card input:focus,.review-submit-card textarea:focus{outline:2px solid #f4a34088}.review-admin-card[hidden]{display:none}.pending-review{border-top:1px solid var(--line);padding:1rem 0}.pending-review:first-child{border-top:0;padding-top:0}.pending-review img{width:100%;max-height:180px;object-fit:cover;border-radius:10px}.pending-review p{font-size:.82rem}.pending-review small{color:var(--muted)}.pending-actions{display:flex;gap:.5rem;margin-top:.7rem}.pending-actions button{border:1px solid #f4a34066;border-radius:999px;background:#f4a3400d;color:var(--amber);padding:.45rem .75rem;cursor:pointer}.review-page-status{min-height:1.2em;color:#ffc247;font-size:.75rem}.review-back{display:inline-block;color:var(--amber);margin-bottom:1.5rem}@media(max-width:700px){.reviews-page{padding:5rem 1rem 4rem}.reviews-page-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="reviews-page">
+    <a class="review-back" href="index.html#reviews">← Ana sayfaya dön</a>
+    <div class="reviews-page-head">
+      <div class="section-kicker">MİSAFİRLERİN SESİ</div>
+      <h1>Yorumunuzu <em>paylaşın.</em></h1>
+      <p>Yazılı yorumların yayınlanması için bir fotoğraf yüklemek zorunludur. Gönderiniz önce yönetici incelemesine gider; onaylanana kadar yalnızca yönetici görür.</p>
+    </div>
+    <div class="reviews-page-grid">
+      <section class="review-submit-card" aria-labelledby="review-submit-title">
+        <h2 id="review-submit-title">Fotoğraflı yorum</h2>
+        <form id="public-review-form">
+          <label for="public-review-name">Adınız (isteğe bağlı)</label>
+          <input id="public-review-name" name="name" maxlength="40" />
+          <label for="public-review-text">Görüşünüz</label>
+          <textarea id="public-review-text" name="text" rows="5" maxlength="500" required></textarea>
+          <label for="public-review-photo">Fotoğraf (zorunlu)</label>
+          <input id="public-review-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required />
+          <label class="review-consent"><input id="food-photo-confirm" name="foodPhotoConfirm" type="checkbox" required /> Bu fotoğraf yalnızca yemek/ürün içeriyor; kişi, çocuk, belge veya başkasına ait içerik içermiyor ve yayınlama hakkı bana ait.</label>
+          <p class="review-admin-note">Bekleyen ve yayınlanan yorumlar en fazla 180 gün saklanır; silme talebi için işletmeyle iletişime geçebilirsiniz.</p>
+          <button class="button" type="submit">Onaya gönder <span aria-hidden="true">↗</span></button>
+          <p class="review-page-status" id="public-review-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="review-admin-card" id="review-admin-card" hidden aria-labelledby="review-admin-title">
+        <h2 id="review-admin-title">Yönetici onayı</h2>
+        <p class="review-admin-note">Bekleyen yorumlar yalnızca yönetici modunda görünür.</p>
+        <div id="pending-reviews"></div>
+      </section>
+    </div>
+    <section class="review-admin-card published-reviews" aria-labelledby="published-title">
+      <h2 id="published-title">Yayınlanan yorumlar</h2>
+      <div id="approved-reviews"><p class="review-admin-note">Henüz yönetici tarafından yayınlanmış yorum yok.</p></div>
+    </section>
+  </main>
+  <script src="reviews.js"></script>
+</body>
+</html>
