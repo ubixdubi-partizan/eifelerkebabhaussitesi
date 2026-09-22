@@ -77,16 +77,16 @@ body{background-color:#2d1311;background-image:radial-gradient(circle at 15% 21%
 /* === Mobile sticky CTA widget === */
 .mobile-cta{display:none}
 @media(max-width:800px){
-  body{padding-bottom:3.8rem}
-  .mobile-cta{position:fixed;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;left:.6rem;right:.6rem;bottom:max(.5rem,env(safe-area-inset-bottom));z-index:20;padding:.35rem;background:rgba(22,12,11,.92);border:1px solid rgba(244,163,64,.35);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.6);backdrop-filter:blur(10px)}
-  .mobile-cta a{display:flex;justify-content:center;align-items:center;gap:.3rem;padding:.55rem .3rem;border-radius:8px;background:linear-gradient(135deg,#f4a340,#e89432);color:#241108;text-decoration:none;font-size:.68rem;font-weight:700;letter-spacing:.01em;transition:opacity .2s}
+  body{padding-bottom:2rem}
+  .mobile-cta{position:fixed;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;left:.6rem;right:.6rem;bottom:max(.5rem,env(safe-area-inset-bottom));z-index:20;padding:.18rem;background:rgba(22,12,11,.92);border:1px solid rgba(244,163,64,.35);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.6);backdrop-filter:blur(10px)}
+  .mobile-cta a{display:flex;justify-content:center;align-items:center;padding:.28rem .3rem;border-radius:6px;background:linear-gradient(135deg,#f4a340,#e89432);color:#241108;text-decoration:none;transition:opacity .2s}
   .mobile-cta a:nth-child(2){background:linear-gradient(135deg,#25D366,#1faa50);color:#fff}
   .mobile-cta a:nth-child(3){background:linear-gradient(135deg,#d64a2e,#c43d24);color:#fff1e8}
   .mobile-cta a:active{opacity:.75}
 }
 @media(max-width:380px){
-  .mobile-cta a{font-size:.62rem;padding:.5rem .2rem;gap:.2rem}
-  .mobile-cta{gap:.3rem;padding:.3rem}
+  .mobile-cta a{padding:.25rem .2rem}
+  .mobile-cta{gap:.3rem;padding:.15rem}
 }
 
 /* === Radio player controls === */
