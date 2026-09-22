@@ -1,82 +1,53 @@
 # Eifeler Kebaphaus · Monschau
 
-Bağımlılıksız, tek sayfalık restoran sitesi. Sadece statik dosyalar: herhangi bir statik hosting (GitHub Pages, Netlify, Cloudflare Pages) üzerinde çalışır, derleme adımı yoktur.
-
-## Dosyalar
-
-| Dosya | Görev |
-| --- | --- |
-| `index.html` | Ana sayfa: hero, hikâye, menü widget'ı, galeri, konum, radyo bağlantısı, puanlama |
-| `i18n.js` | 13 dilin arayüz ve menü çevirileri (tam UTF-8) |
-| `script.js` | Menü filtresi/arama, dil değiştirme, lightbox, puanlama, yönetici modalı |
-| `admin-config.js` | Yönetici girişi ayarları (Supabase bilgileri ve izinli Google e-posta adresleri) |
-| `admin-auth.js` | Google OAuth ile yönetici oturumu ve yetki kontrolü |
-| `storage.js` | Güvenli depolama katmanı; tarayıcı depolaması kapalıysa bellek içinde çalışır |
-| `styles.css` | Tüm görsel stiller, kıvılcım animasyonları, responsive düzen |
-| `reviews.html` / `reviews.js` | Fotoğraflı misafir yorumu gönderimi ve onay listesi |
-| `landscapes.html` / `landscapes.js` / `landscapes.css` | Wikimedia Commons lisanslı manzara galerisi |
-| `public/images/` | Restoran ve menü fotoğrafları |
-| `CNAME`, `robots.txt`, `sitemap.xml`, `.nojekyll` | Alan adı ve SEO yapılandırması |
-
-## Diller
-
-Türkçe, Almanca, İngilizce, Fransızca, Hollandaca, Lüksemburgca, Lehçe, Danca, Çekçe, İtalyanca, İspanyolca, Arapça (RTL) ve Rusça. Metinler `i18n.js` içinde tutulur; yeni metin eklerken HTML tarafında `data-i18n` / `data-menu-i18n` anahtarını kullanın ve aynı anahtarı 13 dile de ekleyin.
+Yerel görsellerle hazırlanmış, bağımlılıksız ve responsive tek sayfalık restoran sitesi. `index.html` dosyası bir statik hosting'e yüklenerek çalışır; kullanıcı görselleri tarayıcıda yerel `public/images` yolundan sunulur ve üçüncü taraf servislere gönderilmez.
 
 ## Yerelde çalıştırma
+
+Dosyayı doğrudan açabilir veya herhangi bir statik sunucu kullanabilirsiniz:
 
 ```bash
 python -m http.server 8080
 ```
 
-Ardından `http://localhost:8080` adresini açın.
+Sonra `http://localhost:8080` adresini açın. Menü ve galeri görselleri tıklanarak erişilebilir lightbox'ta açılır. Dil seçimi şu dillerde içerikleri değiştirir: Türkçe (`tr`), Almanca (`de`), İngilizce (`en`), Fransızca (`fr`), Hollandaca (`nl`), Lüksemburgca (`lb`), Lehçe (`pl`), Danca (`da`), Çekçe (`cs`), İtalyanca (`it`), İspanyolca (`es`), Arapça (`ar`) ve Rusça (`ru`). Arapça seçildiğinde sayfa RTL (sağdan sola) düzene geçer. Radyo otomatik başlamaz; yayın sağlayıcısı erişilemezse güvenilir harici Deutschlandfunk Kultur bağlantısı görünür.
 
-## GitHub Pages ile yayınlama
+## www.eifelerkebabhaus.site için GoDaddy notları
 
-1. Depoyu GitHub'a gönderin (varsayılan dal: `main`).
-2. Depo → **Settings → Pages**: Source = "Deploy from a branch", Branch = `main`, klasör = `/ (root)`.
-3. `CNAME` dosyası `www.eifelerkebabhaus.site` alan adını taşır. Alan adı sağlayıcısında (GoDaddy) `www` için `CNAME` kaydını `<kullanıcı-adı>.github.io` hedefine, kök alan adı için GitHub Pages'in A kayıtlarını girin.
-4. Pages ekranında **Enforce HTTPS** kutusunu işaretleyin. DNS yayılımı birkaç saat sürebilir.
-5. Kendi alan adını kullanmak istemezseniz `CNAME` dosyasını silin; site `<kullanıcı-adı>.github.io/<depo>` adresinden yayınlanır.
+1. GoDaddy'de alan adının **DNS Yönetimi** ekranını açın. Hosting sağlayıcısının verdiği değerleri esas alın; doğrulanmamış bir IP'yi burada varsaymayın.
+2. Hosting sağlayıcısının yönergelerine göre `www` için bir `CNAME` kaydı (çoğunlukla sağlayıcının verdiği hedefe) ve kök alan adı için sağlayıcının önerdiği `A`/`ALIAS` kaydını ekleyin. GoDaddy'nin varsayılan `www` kaydı çakışıyorsa kaldırıp sağlayıcı değerini kullanın.
+3. Hosting panelinde `eifeler...site` alan adını ekleyin ve `index.html`, `styles.css`, `script.js` ile `public/images/` klasörünü yükleyin.
+4. HTTPS/SSL'yi hosting panelinden etkinleştirin. DNS yayılımı birkaç saat sürebilir; `www.eifelerkebabhaus.site` ve kök alan adını ayrı ayrı kontrol edin.
 
-## Search Console
+Bu notlar yapılandırma yolunu açıklar; alan adının şu anda erişilebilir olduğu veya DNS/hosting'in doğrulandığı iddia edilmez.
 
-Site HTTPS üzerinden açıldıktan sonra: Search Console'a alan adı mülkü ekleyin, DNS TXT ile doğrulayın, `sitemap.xml` adresini gönderin ve ana sayfa için dizine ekleme isteyin. Doğrulama dosyası `google3edc7c6992745d3e.html` depoda hazırdır.
+## Google'da görünürlük ve Search Console
 
-## Yönetici girişi (Google ile) — kurulum
+Site gerçek hosting'e yüklendikten ve HTTPS çalıştıktan sonra:
 
-Giriş, Supabase Auth'un ücretsiz katmanı üzerinden Google OAuth ile yapılır. Statik GitHub Pages ile uyumludur; kendi sunucunuzu kurmanız gerekmez. Şifre hiçbir zaman siteye girilmez, doğrulama Google tarafında olur. Yönetici izni yalnızca `admin-config.js` içindeki listede yazan Google e-posta adreslerine verilir.
+1. `https://search.google.com/search-console` adresinde Google hesabıyla oturum açın.
+2. **Mülk ekle** seçeneğinden alan adı mülkü olarak `eifelerkebabhaus.site` ekleyin ve Google'ın verdiği DNS TXT kaydını GoDaddy DNS'e ekleyerek doğrulayın.
+3. Doğrulama tamamlanınca **Sitem haritaları** bölümüne `https://www.eifelerkebabhaus.site/sitemap.xml` adresini gönderin.
+4. **URL denetimi** bölümünde ana sayfanın HTTPS adresini test edip **Dizine eklenmesini iste** seçeneğini kullanın.
+5. `robots.txt` dosyasının ve sitemap adresinin HTTPS üzerinden açıldığını kontrol edin.
 
-**1. Google OAuth Client oluşturun**
-[Google Cloud Console](https://console.cloud.google.com/) → bir proje seçin veya oluşturun → APIs & Services → OAuth consent screen → "Get started" → External app olarak yapılandırın.
-Ardından APIs & Services → Credentials → Create Credentials → OAuth client ID → Application type: Web application.
-- Authorized redirect URIs: Supabase panelinizde göreceğiniz `https://<proje>.supabase.co/auth/v1/callback`
-Client ID ve Client Secret'ı kopyalayın. Bunlar yalnızca Supabase paneline girilir, depoya konmaz.
+Sitemap gönderilmezse Google siteyi yine keşfedebilir, ancak keşif ve güncellenme süreci gecikebilir; sitemap gönderimi indekslenmeyi garanti etmez. Alan adı ve hosting henüz doğrulanmadığı için bu işlem yerel dosyadan yapılamaz.
 
-**2. Supabase projesi açın (ücretsiz)**
-[supabase.com](https://supabase.com) → New project. Ardından Authentication → Providers → Google: Enable, Client ID ve Client Secret'ı yapıştırın, kaydedin.
+## Yönetici girişi ve backend
 
-Authentication → URL Configuration → Site URL: `https://www.eifelerkebabhaus.site`. Redirect URLs listesine şunları ekleyin:
-`https://www.eifelerkebabhaus.site/**` ve test için `http://localhost:8080/**`.
+Güvenli olmayan sabit frontend kullanıcı adı/şifresi kaldırılmıştır. GitHub Pages yalnızca statik dosya sunduğu için gerçek yönetici girişi burada doğrulanamaz. Üretim için ayrı bir backend gerekir:
 
-**3. `admin-config.js` dosyasını doldurun**
-```js
-window.ADMIN_CONFIG = {
-  supabaseUrl: "https://<proje>.supabase.co",
-  supabaseAnonKey: "<anon public key>",
-  allowedEmails: ["sizin@email.com"]
-};
-```
-`anon public key` Project Settings → API ekranındadır; tarayıcıda kullanılmak üzere tasarlanmıştır, gizli anahtar değildir. Gizli olan `service_role` anahtarını asla depoya koymayın.
+1. GitHub OAuth App oluşturulur; `client secret` yalnızca backend ortam değişkeninde tutulur.
+2. Backend, GitHub hesabını doğrular ve yalnızca izin verilen GitHub kullanıcı adına yönetici rolü verir.
+3. Backend güvenli, süreli bir oturum cookie'si üretir; yorum onaylama/silme işlemleri backend API üzerinden yapılır.
+4. Yorumlar veritabanında tutulur; fotoğraf yüklemeleri boyut, tür ve yemek içeriği politikasıyla denetlenir.
 
-**4. Test edin**
-Siteyi açın → başlıktaki yönetici düğmesi → "Google ile giriş yap". Google izin ekranından sonra siteye dönersiniz; listede olan e-postayla girdiyseniz "Yönetici olarak giriş yapıldı" yazar ve `reviews.html` sayfasındaki onay paneli görünür. Listede olmayan bir e-postayla girilirse yönetici paneli açılmaz.
+Bu statik sürümde yönetici işlemleri bilerek etkin değildir; ziyaretçiler misafir olarak siteyi kullanır. GitHub Pages'e gizli anahtar veya şifre eklenmemelidir.
 
-Yapılandırma boş bırakılırsa giriş düğmesi devre dışı kalır ve modal "yapılandırılmadı" uyarısı gösterir; site geri kalan her yönüyle normal çalışır.
+## Yayın öncesi içerik ve telif politikası
 
-## İçerik ve telif notları
-
-- Tripadvisor markası veya bağlantısı kullanılmaz; puanlar sitenin kendi arayüzündedir.
-- Radyo bölümü stream gömmez, yalnızca Deutschlandfunk Kultur'un resmi sayfasına bağlantı verir.
-- Manzara sayfası yalnızca lisansı doğrulanabilen CC BY / CC BY-SA / CC0 / kamu malı içerikleri gösterir; her kartta kaynak ve lisans yazar.
-- Yorum fotoğrafları bu statik sürümde tarayıcı depolamasında tutulur ve 180 gün sonra silinir. Gerçek kullanıcılar için backend şarttır.
-- Bu notlar hukuki danışmanlık değildir; yayın öncesi lisans, KVKK/GDPR ve fotoğraf izinlerini uzmanla doğrulayın.
+- Tripadvisor bağlantısı veya markası kullanılmaz; ziyaretçi puanları bu sitenin kendi yerel arayüzündedir.
+- Radyo gömülü stream çalıştırmaz; yalnızca Deutschlandfunk Kultur'un resmi harici sayfasına bağlantı verir. Ticari işletmede yayın haklarını ayrıca doğrulayın.
+- Manzara sayfası yalnızca Wikimedia Commons'tan lisans ve katkıcı bilgisi doğrulanabilen CC BY/CC BY-SA/CC0/public domain içerikleri göstermeyi dener; her kartta kaynak ve lisans yazılır. API veya lisans doğrulaması başarısızsa görsel gösterilmez.
+- Yorum fotoğrafı zorunludur ve gönderici fotoğrafın yalnızca yemek içerdiğini, yayınlama hakkına sahip olduğunu ve tanımlanabilir kişi içermediğini onaylar. Yorumlar bu statik sürümde tarayıcı depolamasındadır; 180 günlük geçici saklama uygulanır. Gerçek kullanıcılar ve güvenli yönetim için backend gereklidir.
+- Bu teknik önlemler hukuki danışmanlık değildir; yayın öncesi lisans, KVKK/GDPR, fotoğraf izni ve kamuya açık radyo kullanımı bir hukuk uzmanıyla doğrulanmalıdır.

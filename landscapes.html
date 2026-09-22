@@ -4,42 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Manzara köşesi | Eifeler Kebaphaus Monschau</title>
-  <meta name="description" content="Türkiye, Almanya ve dünyanın etkileyici manzaralarından seçilmiş haftalık manzara köşesi." />
+  <meta name="description" content="Türkiye, Almanya ve dünyanın etkileyici manzaralarından seçilmiş günlük manzara köşesi." />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="image/svg+xml" href="public/images/favicon.svg" />
-  <link rel="apple-touch-icon" href="public/images/favicon.svg" />
-  <link rel="shortcut icon" href="public/images/favicon.svg" />
   <link rel="stylesheet" href="landscapes.css" />
 </head>
 <body class="landscape-page">
   <main class="landscape-shell">
-    <a class="landscape-back" href="index.html">← Eifeler Kebaphaus</a>
+    <a class="landscape-back" href="index.html" data-i18n="landscapeBack">← Eifeler Kebaphaus</a>
     <header class="landscape-hero">
-      <p class="section-kicker">EİFELER KEBAPHAUS · MANZARA KÖŞESİ</p>
-      <h1>Dünyaya açılan <em>bir pencere.</em></h1>
-      <p>Her hafta değişen seçkiyle Türkiye'nin, Almanya'nın ve dünyanın farklı coğrafyalarından ilham veren manzaralar.</p>
+      <p class="section-kicker" data-i18n="landscapeKicker">EİFELER KEBAPHAUS · MANZARA KÖŞESİ</p>
+      <h1 data-i18n="landscapeTitle">Dünyaya açılan <em>bir pencere.</em></h1>
+      <p data-i18n="landscapeIntro">Her gün değişen seçkiyle Türkiye'nin, Almanya'nın ve dünyanın farklı coğrafyalarından ilham veren manzaralar.</p>
       <div class="landscape-date" id="landscape-date"></div>
     </header>
     <nav class="landscape-tabs" aria-label="Manzara kategorileri" role="tablist">
-      <button class="landscape-tab active" role="tab" aria-selected="true" data-scenery="turkey">Türkiye</button>
-      <button class="landscape-tab" role="tab" aria-selected="false" data-scenery="germany">Almanya</button>
-      <button class="landscape-tab" role="tab" aria-selected="false" data-scenery="world">Dünya</button>
+      <button class="landscape-tab active" role="tab" aria-selected="true" data-scenery="turkey" data-i18n="landscapeTabTR">Türkiye</button>
+      <button class="landscape-tab" role="tab" aria-selected="false" data-scenery="germany" data-i18n="landscapeTabDE">Almanya</button>
+      <button class="landscape-tab" role="tab" aria-selected="false" data-scenery="world" data-i18n="landscapeTabWorld">Dünya</button>
     </nav>
-    <p class="landscape-status" id="landscape-status" role="status" aria-live="polite">Haftanın seçkisi hazırlanıyor…</p>
+    <p class="landscape-status" id="landscape-status" role="status" aria-live="polite" data-i18n="landscapeStatus">Günün seçkisi hazırlanıyor…</p>
     <section id="landscape-grid" class="landscape-grid" aria-live="polite"></section>
-    <div class="scenery-lightbox" id="scenery-lightbox" role="dialog" aria-modal="true" aria-labelledby="scenery-lightbox-title" hidden>
-      <button class="scenery-lightbox-close" id="scenery-lightbox-close" type="button" aria-label="Kapat">✕</button>
-      <div class="scenery-lightbox-inner">
-        <img id="scenery-lightbox-image" alt="" />
-        <div class="scenery-lightbox-caption">
-          <strong id="scenery-lightbox-title"></strong>
-          <span id="scenery-lightbox-meta"></span>
-          <a id="scenery-lightbox-link" href="#" target="_blank" rel="noopener">Wikimedia Commons kaynak sayfası ↗</a>
-        </div>
-      </div>
-    </div>
+    <p class="landscape-source" data-i18n="landscapeSource">Görseller Wikimedia Commons API üzerinden günlük seçilir. Fotoğraf başlıkları ve lisans bilgileri kart bağlantılarında gösterilir; görselleri yerel olarak indirmiyoruz.</p>
   </main>
-  <script src="storage.js"></script>
-  <script src="landscapes.js"></script>
+  <script src="i18n.js" defer></script>
+  <script src="landscapes.js" defer></script>
 </body>
 </html>
