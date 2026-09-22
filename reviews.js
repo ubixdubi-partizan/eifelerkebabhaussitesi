@@ -1,3 +1,11 @@
+const SUPABASE_URL = "https://uwdwavstozljufbwgftr.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_fLz1lc9XRv1DWN1H3Vrz7w_YwL5sjio";
+const ADMIN_EMAIL = "ubixdubi@gmail.com";
+let supabaseClient = null;
+if (window.supabase && typeof window.supabase.createClient === "function") {
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+}
+
 const pendingKey = "eifeler-kebaphaus-pending-reviews";
 const approvedKey = "eifeler-kebaphaus-approved-reviews";
 const retentionMs = 180 * 24 * 60 * 60 * 1000;
@@ -102,5 +110,28 @@ form.addEventListener("submit", event => {
   });
   reader.readAsDataURL(file);
 });
-renderPending();
+
+// Check Supabase session before rendering admin panel
+if (supabaseClient) {
+  supabaseClient.auth.getSession().then(({ data: { session } }) => {
+    if (session && session.user && session.user.email && session.user.email.toLowerCase() === ADMIN_EMAIL) {
+      sessionStorage.setItem("eifeler-admin", "true");
+    } else {
+      sessionStorage.removeItem("eifeler-admin");
+    }
+    renderPending();
+  });
+
+  // Listen for auth state changes
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+    if (session && session.user && session.user.email && session.user.email.toLowerCase() === ADMIN_EMAIL) {
+      sessionStorage.setItem("eifeler-admin", "true");
+    } else {
+      sessionStorage.removeItem("eifeler-admin");
+    }
+    renderPending();
+  });
+}
+
+// Initial render (approved reviews are always visible)
 renderApproved();

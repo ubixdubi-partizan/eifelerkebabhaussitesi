@@ -178,31 +178,114 @@ ratingForm.addEventListener("submit", event => {
     ratingStatus.textContent = "Vielen Dank \u2013 Ihre Bewertung wurde gespeichert. Keine Administrator-Freigabe erforderlich.";
   }
 });
+/* === Supabase Admin Authentication === */
+const SUPABASE_URL = "https://uwdwavstozljufbwgftr.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_fLz1lc9XRv1DWN1H3Vrz7w_YwL5sjio";
+const ADMIN_EMAIL = "ubixdubi@gmail.com";
+
 const adminLoginOpen = document.querySelector("#admin-login-open");
 const adminLoginClose = document.querySelector("#admin-login-close");
 const adminLoginModal = document.querySelector("#admin-login-modal");
-const adminLoginForm = document.querySelector("#admin-login-form");
 const adminLoginStatus = document.querySelector("#admin-login-status");
+const adminLogoutStatus = document.querySelector("#admin-logout-status");
+const adminGoogleBtn = document.querySelector("#admin-google-btn");
+const adminLogoutBtn = document.querySelector("#admin-logout-btn");
+const adminLoginView = document.querySelector("#admin-login-view");
+const adminLoggedInView = document.querySelector("#admin-logged-in-view");
+const adminUserInfo = document.querySelector("#admin-user-info");
 const adminNotification = document.querySelector("#admin-notification");
-const adminNotificationCount = document.querySelector("#admin-notification-count");
-function setAdminVisibility(isAdmin) {
-  adminNotification.hidden = true;
+
+// Guard: if Supabase SDK failed to load, keep admin disabled without breaking the rest of the site
+let supabaseClient = null;
+if (window.supabase && typeof window.supabase.createClient === "function") {
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 }
-adminLoginOpen.addEventListener("click", () => {
-  adminLoginModal.hidden = false;
-  adminLoginStatus.textContent = "Die sichere GitHub-Administrator-Anmeldung wird aktiviert, sobald das Backend eingerichtet ist.";
-});
-adminLoginClose.addEventListener("click", () => { adminLoginModal.hidden = true; });
-adminLoginModal.addEventListener("click", event => {
-  if (event.target === adminLoginModal) adminLoginModal.hidden = true;
-});
-if (adminLoginForm) {
-  adminLoginForm.addEventListener("submit", event => {
-    event.preventDefault();
-    adminLoginStatus.textContent = "Administrator-Anmeldung noch nicht aktiv. GitHub OAuth und Backend erforderlich.";
+
+function setAdminVisibility() {
+  // Admin notification icon stays hidden; login status is shown inside the modal
+  if (adminNotification) adminNotification.hidden = true;
+}
+
+function updateAdminUI(session) {
+  if (session && session.user && session.user.email && session.user.email.toLowerCase() === ADMIN_EMAIL) {
+    sessionStorage.setItem("eifeler-admin", "true");
+    setAdminVisibility();
+    if (adminLoginView) adminLoginView.hidden = true;
+    if (adminLoggedInView) adminLoggedInView.hidden = false;
+    if (adminUserInfo) adminUserInfo.textContent = "Angemeldet als: " + session.user.email;
+    if (adminLoginStatus) adminLoginStatus.textContent = "";
+  } else {
+    sessionStorage.removeItem("eifeler-admin");
+    setAdminVisibility();
+    if (adminLoginView) adminLoginView.hidden = false;
+    if (adminLoggedInView) adminLoggedInView.hidden = true;
+    if (adminUserInfo) adminUserInfo.textContent = "";
+    // If a non-admin account is logged in, sign them out and inform
+    if (session && session.user && session.user.email && session.user.email.toLowerCase() !== ADMIN_EMAIL) {
+      if (adminLoginStatus) adminLoginStatus.textContent = "Dieses Konto ist kein Administrator. Abmeldung...";
+      if (supabaseClient) supabaseClient.auth.signOut();
+    }
+  }
+}
+
+if (adminLoginOpen) {
+  adminLoginOpen.addEventListener("click", () => {
+    adminLoginModal.hidden = false;
+    adminLoginStatus.textContent = "";
+    adminLogoutStatus.textContent = "";
   });
 }
-setAdminVisibility(false);
+if (adminLoginClose) {
+  adminLoginClose.addEventListener("click", () => { adminLoginModal.hidden = true; });
+}
+if (adminLoginModal) {
+  adminLoginModal.addEventListener("click", event => {
+    if (event.target === adminLoginModal) adminLoginModal.hidden = true;
+  });
+}
+
+if (adminGoogleBtn && supabaseClient) {
+  adminGoogleBtn.addEventListener("click", () => {
+    adminLoginStatus.textContent = "Weiterleitung zu Google...";
+    const redirectTo = window.location.origin + window.location.pathname.replace(/index\.html$/, "");
+    supabaseClient.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: redirectTo }
+    }).then(({ error }) => {
+      if (error) {
+        adminLoginStatus.textContent = "Anmeldung fehlgeschlagen: " + (error.message || "unbekannter Fehler");
+      }
+    });
+  });
+}
+
+if (adminLogoutBtn && supabaseClient) {
+  adminLogoutBtn.addEventListener("click", () => {
+    supabaseClient.auth.signOut().then(({ error }) => {
+      if (error) {
+        adminLogoutStatus.textContent = "Abmeldung fehlgeschlagen.";
+      } else {
+        sessionStorage.removeItem("eifeler-admin");
+        updateAdminUI(null);
+        adminLogoutStatus.textContent = "Erfolgreich abgemeldet.";
+      }
+    });
+  });
+}
+
+// Check session on page load
+if (supabaseClient) {
+  supabaseClient.auth.getSession().then(({ data: { session } }) => {
+    updateAdminUI(session);
+  });
+
+  // Listen for auth state changes
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+    updateAdminUI(session);
+  });
+}
+
+setAdminVisibility();
 document.querySelectorAll("[data-i18n]").forEach(element => {
   if (translations.de[element.dataset.i18n]) element.innerHTML = translations.de[element.dataset.i18n];
 });
