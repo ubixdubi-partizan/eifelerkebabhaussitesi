@@ -1,32 +1,31 @@
 <!doctype html>
-<html lang="tr">
+<html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Manzara köşesi | Eifeler Kebaphaus Monschau</title>
-  <meta name="description" content="Türkiye, Almanya ve dünyanın etkileyici manzaralarından seçilmiş günlük manzara köşesi." />
+  <title>Landschaftsecke | Eifeler Kebaphaus Monschau</title>
+  <meta name="description" content="Tägliche ausgewählte Landschaften aus der Türkei, Deutschland und der Welt." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="landscapes.css" />
 </head>
 <body class="landscape-page">
   <main class="landscape-shell">
-    <a class="landscape-back" href="index.html" data-i18n="landscapeBack">← Eifeler Kebaphaus</a>
+    <a class="landscape-back" href="index.html">← Eifeler Kebaphaus</a>
     <header class="landscape-hero">
-      <p class="section-kicker" data-i18n="landscapeKicker">EİFELER KEBAPHAUS · MANZARA KÖŞESİ</p>
-      <h1 data-i18n="landscapeTitle">Dünyaya açılan <em>bir pencere.</em></h1>
-      <p data-i18n="landscapeIntro">Her gün değişen seçkiyle Türkiye'nin, Almanya'nın ve dünyanın farklı coğrafyalarından ilham veren manzaralar.</p>
+      <p class="section-kicker">EIFELER KEBAPHAUS · LANDSCHAFTSECKE</p>
+      <h1>Ein Fenster zur <em>Welt.</em></h1>
+      <p>Täglich wechselnde Auswahl inspirierender Landschaften aus der Türkei, Deutschland und der ganzen Welt.</p>
       <div class="landscape-date" id="landscape-date"></div>
     </header>
-    <nav class="landscape-tabs" aria-label="Manzara kategorileri" role="tablist">
-      <button class="landscape-tab active" role="tab" aria-selected="true" data-scenery="turkey" data-i18n="landscapeTabTR">Türkiye</button>
-      <button class="landscape-tab" role="tab" aria-selected="false" data-scenery="germany" data-i18n="landscapeTabDE">Almanya</button>
-      <button class="landscape-tab" role="tab" aria-selected="false" data-scenery="world" data-i18n="landscapeTabWorld">Dünya</button>
+    <nav class="landscape-tabs" aria-label="Landschaftskategorien" role="tablist">
+      <button class="landscape-tab active" role="tab" aria-selected="true" data-scenery="turkey">Türkei</button>
+      <button class="landscape-tab" role="tab" aria-selected="false" data-scenery="germany">Deutschland</button>
+      <button class="landscape-tab" role="tab" aria-selected="false" data-scenery="world">Welt</button>
     </nav>
-    <p class="landscape-status" id="landscape-status" role="status" aria-live="polite" data-i18n="landscapeStatus">Günün seçkisi hazırlanıyor…</p>
+    <p class="landscape-status" id="landscape-status" role="status" aria-live="polite">Tagesauswahl wird vorbereitet…</p>
     <section id="landscape-grid" class="landscape-grid" aria-live="polite"></section>
-    <p class="landscape-source" data-i18n="landscapeSource">Görseller Wikimedia Commons API üzerinden günlük seçilir. Fotoğraf başlıkları ve lisans bilgileri kart bağlantılarında gösterilir; görselleri yerel olarak indirmiyoruz.</p>
+    <p class="landscape-source">Bilder werden täglich über die Wikimedia Commons API ausgewählt. Fototitel und Lizenzinformationen werden auf den Kartenlinks angezeigt; Bilder werden nicht lokal gespeichert.</p>
   </main>
-  <script src="i18n.js" defer></script>
-  <script src="landscapes.js" defer></script>
+  <script src="landscapes.js"></script>
 </body>
 </html>

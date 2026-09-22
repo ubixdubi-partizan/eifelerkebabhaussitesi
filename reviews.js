@@ -28,16 +28,16 @@ function renderPending() {
     article.className = "pending-review";
     const image = document.createElement("img");
     image.src = review.photo;
-    image.alt = "Bekleyen misafir yorumu fotoğrafı";
+    image.alt = "Foto der ausstehenden Gästebewertung";
     const text = document.createElement("p");
     text.textContent = review.text;
     const author = document.createElement("small");
-    author.textContent = `— ${review.name || "Misafir"}`;
+    author.textContent = `— ${review.name || "Gast"}`;
     const actions = document.createElement("div");
     actions.className = "pending-actions";
     const approve = document.createElement("button");
     approve.type = "button";
-    approve.textContent = "Onayla";
+    approve.textContent = "Genehmigen";
     approve.addEventListener("click", () => {
       const remaining = pending().filter(item => item.id !== review.id);
       const approved = readFresh(approvedKey);
@@ -49,7 +49,7 @@ function renderPending() {
     });
     const reject = document.createElement("button");
     reject.type = "button";
-    reject.textContent = "Sil";
+    reject.textContent = "Löschen";
     reject.addEventListener("click", () => {
       savePending(pending().filter(item => item.id !== review.id));
       renderPending();
@@ -58,7 +58,7 @@ function renderPending() {
     article.append(image, text, author, actions);
     pendingList.append(article);
   });
-  if (!pendingList.children.length) pendingList.textContent = "Bekleyen yorum yok.";
+  if (!pendingList.children.length) pendingList.textContent = "Keine ausstehenden Bewertungen.";
 }
 function renderApproved() {
   const approvedList = document.querySelector("#approved-reviews");
@@ -69,25 +69,25 @@ function renderApproved() {
     article.className = "pending-review";
     const image = document.createElement("img");
     image.src = review.photo;
-    image.alt = "Eifeler Kebaphaus misafir yorumu fotoğrafı";
+    image.alt = "Foto der Eifeler Kebaphaus Gästebewertung";
     const text = document.createElement("p");
     text.textContent = review.text;
     const author = document.createElement("small");
-    author.textContent = `— ${review.name || "Misafir"}`;
+    author.textContent = `— ${review.name || "Gast"}`;
     article.append(image, text, author);
     approvedList.append(article);
   });
-  if (!approved.length) approvedList.innerHTML = "<p class=\"review-admin-note\">Henüz yönetici tarafından yayınlanmış yorum yok.</p>";
+  if (!approved.length) approvedList.innerHTML = "<p class=\"review-admin-note\">Es wurden noch keine Bewertungen vom Administrator veröffentlicht.</p>";
 }
 form.addEventListener("submit", event => {
   event.preventDefault();
   const file = form.elements.photo.files[0];
   if (!file || !file.type.startsWith("image/") || !form.elements.foodPhotoConfirm.checked) {
-    status.textContent = "Lütfen bir fotoğraf yükleyin.";
+    status.textContent = "Bitte laden Sie ein Foto hoch.";
     return;
   }
   if (file.size > 5 * 1024 * 1024) {
-    status.textContent = "Fotoğraf 5 MB'dan küçük olmalıdır.";
+    status.textContent = "Das Foto muss kleiner als 5 MB sein.";
     return;
   }
   const reader = new FileReader();
@@ -96,7 +96,7 @@ form.addEventListener("submit", event => {
     reviews.push({id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()), createdAt: Date.now(), name: form.elements.name.value.trim(), text: form.elements.text.value.trim(), photo: reader.result});
     savePending(reviews);
     form.reset();
-    status.textContent = "Yorumunuz yönetici onayına gönderildi.";
+    status.textContent = "Ihre Bewertung wurde zur Administrator-Freigabe gesendet.";
     renderPending();
     renderApproved();
   });

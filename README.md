@@ -1,6 +1,6 @@
 # Eifeler Kebaphaus · Monschau
 
-Yerel görsellerle hazırlanmış, bağımlılıksız ve responsive tek sayfalık restoran sitesi. `index.html` dosyası bir statik hosting'e yüklenerek çalışır; kullanıcı görselleri tarayıcıda yerel `public/images` yolundan sunulur ve üçüncü taraf servislere gönderilmez.
+Yerel görsellerle hazırlanmış, bağımlılıksız ve responsive tek sayfalık restoran sitesi. Site Almanca tek dildir. `index.html` dosyası bir statik hosting'e yüklenerek çalışır; kullanıcı görselleri tarayıcıda yerel `public/images` yolundan sunulur ve üçüncü taraf servislere gönderilmez.
 
 ## Yerelde çalıştırma
 
@@ -10,7 +10,7 @@ Dosyayı doğrudan açabilir veya herhangi bir statik sunucu kullanabilirsiniz:
 python -m http.server 8080
 ```
 
-Sonra `http://localhost:8080` adresini açın. Menü ve galeri görselleri tıklanarak erişilebilir lightbox'ta açılır. Dil seçimi şu dillerde içerikleri değiştirir: Türkçe (`tr`), Almanca (`de`), İngilizce (`en`), Fransızca (`fr`), Hollandaca (`nl`), Lüksemburgca (`lb`), Lehçe (`pl`), Danca (`da`), Çekçe (`cs`), İtalyanca (`it`), İspanyolca (`es`), Arapça (`ar`) ve Rusça (`ru`). Arapça seçildiğinde sayfa RTL (sağdan sola) düzene geçer. Radyo otomatik başlamaz; yayın sağlayıcısı erişilemezse güvenilir harici Deutschlandfunk Kultur bağlantısı görünür.
+Sonra `http://localhost:8080` adresini açın. Menü ve galeri görselleri tıklanarak erişilebilir lightbox'ta açılır. Site Almanca tek dildir; dil seçimi kaldırılmıştır. Radyo bölümünde 5 Alman kültür radyo istasyonu (Deutschlandfunk Kultur, BR-Klassik, SWR Kultur, NDR Kultur, WDR 3) çalınabilir; play/pause ve ileri/geri butonlarıyla kontrol edilebilir. Radyo otomatik başlamaz; yayın sağlayıcısı erişilemezse güvenilir harici bağlantı görünür.
 
 ## www.eifelerkebabhaus.site için GoDaddy notları
 

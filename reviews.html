@@ -1,72 +1,51 @@
 <!doctype html>
-<html lang="tr">
+<html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Misafir yorumları | Eifeler Kebaphaus Monschau</title>
-  <meta name="description" content="Eifeler Kebaphaus Monschau için fotoğraflı misafir yorumu gönderin." />
+  <title>Gästebewertungen | Eifeler Kebaphaus Monschau</title>
+  <meta name="description" content="Teilen Sie Ihre Foto-Bewertung für das Eifeler Kebaphaus in Monschau." />
   <link rel="canonical" href="https://www.eifelerkebabhaus.site/reviews.html" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .reviews-page{max-width:860px;margin:0 auto;padding:7rem 0 5rem}
-    .reviews-page-head{margin-bottom:2rem}
-    .reviews-page-head p,.review-admin-note{color:var(--muted);max-width:650px}
-    .reviews-page-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-    .review-submit-card,.review-admin-card{background:linear-gradient(145deg,#2d1b16,#17100e);border:1px solid #f4a34055;border-radius:22px;padding:1.4rem;box-shadow:0 20px 60px #0007}
-    .review-submit-card form{display:grid;gap:.55rem}
-    .review-submit-card label{font-size:.72rem;color:var(--muted)}
-    .review-submit-card input,.review-submit-card textarea{width:100%;border:1px solid #ffffff20;border-radius:10px;background:#100d0c;color:var(--cream);font:inherit;padding:.7rem}
-    .review-submit-card input[type=file]{padding:.55rem}
-    .review-submit-card input:focus,.review-submit-card textarea:focus{outline:2px solid #f4a34088}
-    .review-admin-card[hidden]{display:none}
-    .pending-review{border-top:1px solid var(--line);padding:1rem 0}
-    .pending-review:first-child{border-top:0;padding-top:0}
-    .pending-review img{width:100%;max-height:180px;object-fit:cover;border-radius:10px}
-    .pending-review p{font-size:.82rem}
-    .pending-review small{color:var(--muted)}
-    .pending-actions{display:flex;gap:.5rem;margin-top:.7rem}
-    .pending-actions button{border:1px solid #f4a34066;border-radius:999px;background:#f4a3400d;color:var(--amber);padding:.45rem .75rem;cursor:pointer}
-    .review-page-status{min-height:1.2em;color:#ffc247;font-size:.75rem}
-    .review-back{display:inline-block;color:var(--amber);margin-bottom:1.5rem}
-    @media(max-width:700px){.reviews-page{padding:5rem 1rem 4rem}.reviews-page-grid{grid-template-columns:1fr}}
+    .reviews-page{max-width:860px;margin:0 auto;padding:7rem 0 5rem}.reviews-page-head{margin-bottom:2rem}.reviews-page-head p,.review-admin-note{color:var(--muted);max-width:650px}.reviews-page-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.review-submit-card,.review-admin-card{background:linear-gradient(145deg,#2d1b16,#17100e);border:1px solid #f4a34055;border-radius:22px;padding:1.4rem;box-shadow:0 20px 60px #0007}.review-submit-card form{display:grid;gap:.55rem}.review-submit-card label{font-size:.72rem;color:var(--muted)}.review-submit-card input,.review-submit-card textarea{width:100%;border:1px solid #ffffff20;border-radius:10px;background:#100d0c;color:var(--cream);font:inherit;padding:.7rem}.review-submit-card input[type=file]{padding:.55rem}.review-submit-card input:focus,.review-submit-card textarea:focus{outline:2px solid #f4a34088}.review-admin-card[hidden]{display:none}.pending-review{border-top:1px solid var(--line);padding:1rem 0}.pending-review:first-child{border-top:0;padding-top:0}.pending-review img{width:100%;max-height:180px;object-fit:cover;border-radius:10px}.pending-review p{font-size:.82rem}.pending-review small{color:var(--muted)}.pending-actions{display:flex;gap:.5rem;margin-top:.7rem}.pending-actions button{border:1px solid #f4a34066;border-radius:999px;background:#f4a3400d;color:var(--amber);padding:.45rem .75rem;cursor:pointer}.review-page-status{min-height:1.2em;color:#ffc247;font-size:.75rem}.review-back{display:inline-block;color:var(--amber);margin-bottom:1.5rem}@media(max-width:700px){.reviews-page{padding:5rem 1rem 4rem}.reviews-page-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <main class="reviews-page">
-    <a class="review-back" href="index.html#reviews" data-i18n="reviewsBack">← Ana sayfaya dön</a>
+    <a class="review-back" href="index.html#reviews">← Zurück zur Startseite</a>
     <div class="reviews-page-head">
-      <div class="section-kicker" data-i18n="reviewsPageKicker">MİSAFİRLERİN SESİ</div>
-      <h1 data-i18n="reviewsPageTitle">Yorumunuzu <em>paylaşın.</em></h1>
-      <p data-i18n="reviewsPageIntro">Yazılı yorumların yayımlanması için bir fotoğraf yüklemek zorunludur. Gönderiniz önce yönetici incelemesine gider; onaylanana kadar yalnızca yönetici görür.</p>
+      <div class="section-kicker">STIMMEN DER GÄSTE</div>
+      <h1>Teilen Sie Ihre <em>Bewertung.</em></h1>
+      <p>Für die Veröffentlichung schriftlicher Bewertungen ist ein Foto erforderlich. Ihre Einreichung wird zunächst von der Verwaltung geprüft und erst nach Freigabe veröffentlicht.</p>
     </div>
     <div class="reviews-page-grid">
       <section class="review-submit-card" aria-labelledby="review-submit-title">
-        <h2 id="review-submit-title" data-i18n="reviewSubmitTitle">Fotoğraflı yorum</h2>
+        <h2 id="review-submit-title">Fotobewertung</h2>
         <form id="public-review-form">
-          <label for="public-review-name" data-i18n="reviewName">Adınız (isteğe bağlı)</label>
+          <label for="public-review-name">Ihr Name (optional)</label>
           <input id="public-review-name" name="name" maxlength="40" />
-          <label for="public-review-text" data-i18n="reviewText">Görüşünüz</label>
+          <label for="public-review-text">Ihre Meinung</label>
           <textarea id="public-review-text" name="text" rows="5" maxlength="500" required></textarea>
-          <label for="public-review-photo" data-i18n="reviewPhoto">Fotoğraf (zorunlu)</label>
+          <label for="public-review-photo">Foto (erforderlich)</label>
           <input id="public-review-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required />
-          <label class="review-consent"><input id="food-photo-confirm" name="foodPhotoConfirm" type="checkbox" required /> <span data-i18n="reviewConsent">Bu fotoğraf yalnızca yemek/ürün içeriyor; kişi, çocuk, belge veya başkasına ait içerik içermiyor ve yayınlama hakkı bana ait.</span></label>
-          <p class="review-admin-note" data-i18n="reviewAdminNote">Bekleyen ve yayımlanan yorumlar en fazla 180 gün saklanır; silme talebi için işletmeyle iletişime geçebilirsiniz.</p>
-          <button class="button" type="submit" data-i18n="reviewSubmit">Onaya gönder <span aria-hidden="true">↗</span></button>
+          <label class="review-consent"><input id="food-photo-confirm" name="foodPhotoConfirm" type="checkbox" required /> Dieses Foto zeigt ausschließlich Essen/Produkte; es enthält keine Personen, Kinder, Dokumente oder fremde Inhalte und ich verfüge über das Veröffentlichungsrecht.</label>
+          <p class="review-admin-note">Ausstehende und veröffentlichte Bewertungen werden maximal 180 Tage gespeichert. Für Löschanfragen wenden Sie sich bitte an das Geschäft.</p>
+          <button class="button" type="submit">Zur Freigabe senden <span aria-hidden="true">↗</span></button>
           <p class="review-page-status" id="public-review-status" role="status" aria-live="polite"></p>
         </form>
       </section>
       <section class="review-admin-card" id="review-admin-card" hidden aria-labelledby="review-admin-title">
-        <h2 id="review-admin-title" data-i18n="reviewAdminTitle">Yönetici onayı</h2>
-        <p class="review-admin-note" data-i18n="reviewAdminNote2">Bekleyen yorumlar yalnızca yönetici modunda görünür.</p>
+        <h2 id="review-admin-title">Administrator-Freigabe</h2>
+        <p class="review-admin-note">Ausstehende Bewertungen sind nur im Administrator-Modus sichtbar.</p>
         <div id="pending-reviews"></div>
       </section>
     </div>
     <section class="review-admin-card published-reviews" aria-labelledby="published-title">
-      <h2 id="published-title" data-i18n="reviewPublishedTitle">Yayınlanan yorumlar</h2>
-      <div id="approved-reviews"><p class="review-admin-note" data-i18n="reviewNoPublished">Henüz yönetici tarafından yayınlanmış yorum yok.</p></div>
+      <h2 id="published-title">Veröffentlichte Bewertungen</h2>
+      <div id="approved-reviews"><p class="review-admin-note">Es wurden noch keine Bewertungen vom Administrator veröffentlicht.</p></div>
     </section>
   </main>
-  <script src="i18n.js" defer></script>
-  <script src="reviews.js" defer></script>
+  <script src="reviews.js"></script>
 </body>
 </html>
