@@ -24,8 +24,20 @@
     </nav>
     <p class="landscape-status" id="landscape-status" role="status" aria-live="polite">Günün seçkisi hazırlanıyor…</p>
     <section id="landscape-grid" class="landscape-grid" aria-live="polite"></section>
-    <p class="landscape-source">Görseller Wikimedia Commons API üzerinden günlük seçilir. Fotoğraf başlıkları ve lisans bilgileri kart bağlantılarında gösterilir; görselleri yerel olarak indirmiyoruz.</p>
+    <p class="landscape-source">Görseller Wikimedia Commons üzerinden her gün yeniden seçilir ve Commons sunucusundan gösterilir; kopyalanıp bu siteye yüklenmez. Yalnızca lisansı CC0, kamu malı, CC BY veya CC BY-SA olan ve eser sahibi belirtilen dosyalar kullanılır; her kartta eser sahibi ile lisans adı yazar ve kart, kaynak dosya sayfasına bağlanır. Başlıklar dosyanın kendi adı veya açıklamasından alınır. Lisans koşulunu ihlal ettiğini düşündüğünüz bir görseli bildirirseniz derhal kaldırılır.</p>
+    <div class="scenery-lightbox" id="scenery-lightbox" role="dialog" aria-modal="true" aria-labelledby="scenery-lightbox-title" hidden>
+      <button class="scenery-lightbox-close" id="scenery-lightbox-close" type="button" aria-label="Kapat">✕</button>
+      <div class="scenery-lightbox-inner">
+        <img id="scenery-lightbox-image" alt="" />
+        <div class="scenery-lightbox-caption">
+          <strong id="scenery-lightbox-title"></strong>
+          <span id="scenery-lightbox-meta"></span>
+          <a id="scenery-lightbox-link" href="#" target="_blank" rel="noopener">Wikimedia Commons kaynak sayfası ↗</a>
+        </div>
+      </div>
+    </div>
   </main>
+  <script src="storage.js"></script>
   <script src="landscapes.js"></script>
 </body>
 </html>

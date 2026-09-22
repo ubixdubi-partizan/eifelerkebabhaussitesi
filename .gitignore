@@ -1,3 +1,4 @@
 *.encoding-backup
 .DS_Store
 Thumbs.db
+*.7z

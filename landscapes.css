@@ -1,1 +1,52 @@
-.landscape-empty{grid-column:1/-1;border:1px solid var(--line);border-radius:16px;padding:2rem;color:var(--muted);text-align:center;background:#17100ecc}
+/* Manzara köşesi — sinematik galeri */
+.landscape-page { background: radial-gradient(1200px 700px at 50% -10%, #2a1a12 0%, #120c09 55%, #0b0705 100%); }
+.landscape-shell { max-width: 1240px; margin: 0 auto; padding: 2.5rem 1.4rem 4rem; }
+.landscape-hero h1 { font-size: clamp(2.2rem, 5.4vw, 4rem); line-height: 1.04; margin: .4rem 0 .8rem; overflow-wrap: break-word; }
+.landscape-hero p { max-width: 62ch; color: var(--muted); }
+.landscape-date { margin-top: 1rem; font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; color: #e9c98a; }
+.landscape-tabs { display: flex; flex-wrap: wrap; gap: .6rem; margin: 2rem 0 1rem; }
+.landscape-tab { cursor: pointer; border: 1px solid #ffffff1f; background: #ffffff0a; color: #f5ece0; padding: .6rem 1.2rem; border-radius: 999px; font: inherit; font-size: .9rem; letter-spacing: .04em; transition: background .25s ease, border-color .25s ease, transform .25s ease; }
+.landscape-tab:hover { background: #ffffff14; transform: translateY(-1px); }
+.landscape-tab.active { background: linear-gradient(135deg, #e8a33d, #c2611d); border-color: #f0b455; color: #1a0f07; font-weight: 600; }
+.landscape-status { color: var(--muted); font-size: .92rem; margin: 0 0 1.4rem; min-height: 1.4em; }
+
+.landscape-grid { columns: 3 300px; column-gap: 1.1rem; }
+@media (max-width: 720px) { .landscape-grid { columns: 1; } }
+
+.scenery-skeleton { height: var(--h, 240px); margin-bottom: 1.1rem; border-radius: 18px; background: linear-gradient(100deg, #ffffff08 20%, #ffffff16 40%, #ffffff08 60%); background-size: 220% 100%; animation: sceneryShimmer 1.5s linear infinite; break-inside: avoid; }
+@keyframes sceneryShimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+
+.scenery-card { position: relative; break-inside: avoid; margin: 0 0 1.1rem; border-radius: 18px; overflow: hidden; cursor: zoom-in; background: #150e0a; border: 1px solid #ffffff12; opacity: 0; transform: translateY(18px); transition: opacity .6s ease var(--delay, 0ms), transform .6s cubic-bezier(.2,.8,.2,1) var(--delay, 0ms), box-shadow .35s ease, border-color .35s ease; }
+.scenery-card.is-loaded { opacity: 1; transform: none; }
+.scenery-card img { display: block; width: 100%; height: auto; transform: scale(1.01); transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s ease; filter: saturate(.92) contrast(1.02); }
+.scenery-card:hover, .scenery-card:focus-visible { border-color: #f0b45566; box-shadow: 0 22px 50px -24px #000, 0 0 0 1px #f0b45533; outline: none; }
+.scenery-card:hover img, .scenery-card:focus-visible img { transform: scale(1.07); filter: saturate(1.08) contrast(1.05); }
+.scenery-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, #08050340 0%, #0805030d 45%, transparent 70%); pointer-events: none; transition: opacity .4s ease; }
+.scenery-card:hover::after { opacity: .65; }
+
+.scenery-badge { position: absolute; top: .7rem; left: .7rem; z-index: 2; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .55rem; border-radius: 999px; background: #0b070599; color: #f3dcb4; border: 1px solid #ffffff24; backdrop-filter: blur(6px); opacity: 0; transform: translateY(-4px); transition: opacity .3s ease, transform .3s ease; }
+.scenery-card:hover .scenery-badge, .scenery-card:focus-visible .scenery-badge { opacity: 1; transform: none; }
+
+.scenery-card figcaption { position: absolute; z-index: 2; inset: auto 0 0 0; padding: 1.1rem .95rem .9rem; display: grid; gap: .25rem; background: linear-gradient(to top, #0a0705f2, #0a070599 60%, transparent); transform: translateY(22%); opacity: 0; transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .4s ease; }
+.scenery-card:hover figcaption, .scenery-card:focus-visible figcaption { transform: none; opacity: 1; }
+.scenery-card figcaption strong { font-size: .95rem; line-height: 1.25; color: #fff6e6; overflow-wrap: break-word; }
+.scenery-card figcaption small { font-size: .72rem; color: #d9c6ab; }
+
+.scenery-lightbox { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: clamp(1rem, 4vw, 3rem); background: #05030299; backdrop-filter: blur(14px); }
+.scenery-lightbox-inner { max-width: min(1100px, 94vw); display: grid; gap: .9rem; justify-items: center; }
+.scenery-lightbox img { max-width: 100%; max-height: 74vh; border-radius: 16px; box-shadow: 0 40px 90px -40px #000; }
+.scenery-lightbox-caption { text-align: center; display: grid; gap: .3rem; }
+.scenery-lightbox-caption strong { font-size: 1.05rem; color: #fff6e6; }
+.scenery-lightbox-caption span { font-size: .82rem; color: #d9c6ab; }
+.scenery-lightbox-caption a { font-size: .82rem; color: #f0b455; }
+.scenery-lightbox-close { position: absolute; top: 1rem; right: 1.2rem; width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 1px solid #ffffff2b; background: #0b070580; color: #f5ece0; font-size: 1.1rem; cursor: pointer; }
+.scenery-lightbox-close:hover { background: #ffffff1a; }
+
+.landscape-source { margin-top: 2.4rem; font-size: .78rem; line-height: 1.6; color: #a4917c; max-width: 80ch; }
+.landscape-back { display: inline-block; margin-bottom: 1.6rem; font-size: .86rem; color: #e9c98a; }
+.landscape-empty { grid-column: 1/-1; border: 1px solid var(--line); border-radius: 16px; padding: 2rem; color: var(--muted); text-align: center; background: #17100ecc; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scenery-card, .scenery-card img, .scenery-card figcaption, .scenery-badge { transition: none; opacity: 1; transform: none; }
+  .scenery-skeleton { animation: none; }
+}
