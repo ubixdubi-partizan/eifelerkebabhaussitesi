@@ -44,7 +44,10 @@ const EIFEL_BLOCKED_WORDS = /sketch|drawing|engrav|lithograph|etching|map |karte
   const weekOffset = weekNum % 6;
 
   if (weekLabel) {
-    weekLabel.textContent = "Hafta " + weekNum + " · " + now.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
+    var weekLbl = (typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].widgetWeek) || "Hafta";
+    var localeMap = { tr: "tr-TR", de: "de-DE", en: "en-US", fr: "fr-FR", nl: "nl-NL", pl: "pl-PL", da: "da-DK", cs: "cs-CZ", it: "it-IT", es: "es-ES", ar: "ar-SA", ru: "ru-RU", lb: "de-LU" };
+    var userLocale = localeMap[document.documentElement.lang] || "tr-TR";
+    weekLabel.textContent = weekLbl + " " + weekNum + " · " + now.toLocaleDateString(userLocale, { day: "numeric", month: "long", year: "numeric" });
   }
 
   const stripTags = value => String(value || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
@@ -201,7 +204,7 @@ const EIFEL_BLOCKED_WORDS = /sketch|drawing|engrav|lithograph|etching|map |karte
   }
 
   async function renderScenery() {
-    if (status) status.textContent = "Eifel & Monschau manzaraları yükleniyor…";
+    if (status) status.textContent = (typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].widgetLoading) || "Eifel & Monschau manzaraları yükleniyor…";
     skeletons(5);
     const results = await Promise.all(
       EIFEL_SCENERY_QUERIES.slice(weekOffset, weekOffset + 5).concat(EIFEL_SCENERY_QUERIES.slice(0, Math.max(0, 5 - (12 - weekOffset)))).slice(0, 5).map(query =>
@@ -214,13 +217,14 @@ const EIFEL_BLOCKED_WORDS = /sketch|drawing|engrav|lithograph|etching|map |karte
     if (!items.length) {
       const message = document.createElement("p");
       message.style.cssText = "grid-column:1/-1;padding:2rem;text-align:center;color:var(--muted);font-size:.85rem;";
-      message.textContent = "Manzara servisine şu anda ulaşılamıyor. Birazdan tekrar deneyin.";
+      message.textContent = (typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].widgetError) || "Manzara servisine şu anda ulaşılamıyor. Birazdan tekrar deneyin.";
       track.append(message);
-      if (status) status.textContent = "Eifel'in doğusundan manzaralar.";
+      if (status) status.textContent = (typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].widgetReady) || "Eifel'in doğusundan manzaralar.";
       return;
     }
     items.forEach((item, index) => track.append(card(item, index)));
-    if (status) status.textContent = "Bu haftanın Eifel & Monschau seçkisi · " + items.length + " görsel.";
+    var countLbl = (typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].widgetCount) || "Bu haftanın Eifel & Monschau seçkisi";
+    if (status) status.textContent = countLbl + " · " + items.length + " " + ((typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].widgetImages) || "görsel") + ".";
   }
 
   renderScenery();

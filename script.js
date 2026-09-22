@@ -181,7 +181,7 @@
       if (isPlaying) {
         radioAudio.play().catch(() => {
           // Stream failed - try next station
-          if (radioStationDesc) radioStationDesc.textContent = "Stream yüklenemedi, tekrar deneyin";
+          if (radioStationDesc) radioStationDesc.textContent = (typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].radioStreamError) || "Stream yüklenemedi, tekrar deneyin";
         });
       }
     }
@@ -201,7 +201,7 @@
           radioPlayBtn.classList.add("playing");
           if (radioLiveDot) radioLiveDot.style.background = "#72b043";
         }).catch(() => {
-          if (radioStationDesc) radioStationDesc.textContent = "Stream yüklenemedi, başka kanal deneyin";
+          if (radioStationDesc) radioStationDesc.textContent = (typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].radioStreamError2) || "Stream yüklenemedi, başka kanal deneyin";
         });
       } else {
         radioAudio.pause();
@@ -228,14 +228,14 @@
         updateStationDisplay();
         if (isPlaying) {
           radioAudio.play().catch(() => {
-            if (radioStationDesc) radioStationDesc.textContent = "Stream yüklenemedi, tekrar deneyin";
+            if (radioStationDesc) radioStationDesc.textContent = (typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].radioStreamError) || "Stream yüklenemedi, tekrar deneyin";
           });
         }
       });
     }
 
     radioAudio.addEventListener("error", () => {
-      if (radioStationDesc) radioStationDesc.textContent = "Stream yüklenemedi, başka kanal deneyin";
+      if (radioStationDesc) radioStationDesc.textContent = (typeof I18N !== "undefined" && I18N[document.documentElement.lang] && I18N[document.documentElement.lang].radioStreamError2) || "Stream yüklenemedi, başka kanal deneyin";
       isPlaying = false;
       radioPlayBtn.textContent = "▶";
       radioPlayBtn.classList.remove("playing");
