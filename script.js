@@ -6,7 +6,7 @@ const translations = {
     navContact: "Kontakt",
     call: "Anrufen",
     eyebrow: "Monschau, Deutschland \u00b7 Vom Feuer auf Ihren Tisch",
-    heroTitle: "Echter D\u00f6ner.<br><em>Warme Gastfreundschaft.</em>",
+    heroTitle: "Echter D\u00f6ner.<br><em>Warme Gastlichkeit.</em>",
     heroCopy: "Im Herzen der Eifel: frische Zutaten und erfahrene H\u00e4nde am Feuer f\u00fcr eine unvergessliche Kebab-Pause.",
     viewMenu: "Speisekarte entdecken \u2197",
     parking: "Parkpl\u00e4tze",
