@@ -115,7 +115,7 @@ document.addEventListener("keydown", event => {
 });
 if (adminSignInButton) {
   adminSignInButton.addEventListener("click", async () => {
-    adminLoginStatus.textContent = "GitHub'a yönlendiriliyorsunuz...";
+    adminLoginStatus.textContent = "Google'a yönlendiriliyorsunuz...";
     try { await window.adminAuth.signIn(); }
     catch (err) { adminLoginStatus.textContent = "Giriş başlatılamadı: " + (err && err.message ? err.message : err); }
   });

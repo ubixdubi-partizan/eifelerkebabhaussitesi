@@ -1,7 +1,7 @@
-/* GitHub ile yönetici girişi — Supabase Auth (ücretsiz katman) üzerinden.
+/* Google ile yönetici girişi — Supabase Auth (ücretsiz katman) üzerinden.
    Statik hosting (GitHub Pages) ile uyumludur: sunucu kodu gerektirmez.
-   Kimlik doğrulaması Supabase'te yapılır; burada yalnızca oturumun GitHub
-   kullanıcı adı ADMIN_CONFIG.allowedGithubLogins listesiyle karşılaştırılır. */
+   Kimlik doğrulaması Supabase'te yapılır; burada yalnızca oturumun Google
+   e-posta adresi ADMIN_CONFIG.allowedEmails listesiyle karşılaştırılır. */
 (function () {
   const CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js";
   const cfg = window.ADMIN_CONFIG || {};
@@ -29,18 +29,17 @@
     });
   }
 
-  function githubLoginOf(session) {
+  function googleEmailOf(session) {
     if (!session || !session.user) return null;
-    const meta = session.user.user_metadata || {};
-    const name = meta.user_name || meta.preferred_username || meta.nickname || null;
-    return name ? String(name).toLowerCase() : null;
+    const email = session.user.email || (session.user.user_metadata || {}).email || null;
+    return email ? String(email).toLowerCase() : null;
   }
 
   function applySession(session) {
-    const login = githubLoginOf(session);
-    const allowed = (cfg.allowedGithubLogins || []).map(item => String(item).toLowerCase());
-    state.login = login;
-    state.isAdmin = Boolean(login && allowed.includes(login));
+    const email = googleEmailOf(session);
+    const allowed = (cfg.allowedEmails || []).map(item => String(item).toLowerCase());
+    state.login = email;
+    state.isAdmin = Boolean(email && allowed.includes(email));
     if (window.siteStore) window.siteStore.setSession("eifeler-admin", state.isAdmin ? "true" : "false");
     emit();
   }
@@ -58,7 +57,7 @@
     async signIn() {
       if (!state.client) throw new Error("Yönetici girişi henüz yapılandırılmadı.");
       const { error } = await state.client.auth.signInWithOAuth({
-        provider: "github",
+        provider: "google",
         options: { redirectTo: window.location.origin + window.location.pathname }
       });
       if (error) throw error;
