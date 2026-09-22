@@ -1,0 +1,109 @@
+/* Eifel Manzara Widget — "Eifel manzarası, Anadolu ateşi" bölümü için
+   telifsiz (CC0 / kamu malı / CC BY / CC BY-SA) Monschau & Eifel görselleri.
+   Görseller Wikimedia Commons'tan haftalık döner; lisans ve eser sahibi her kartta yazılıdır. */
+
+.eifel-scenery { margin-top: 4rem; }
+.eifel-scenery-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+}
+.eifel-scenery-head h3 {
+  font-size: clamp(1.4rem, 2.8vw, 2.1rem); line-height: 1.1;
+  margin: .3rem 0 0; letter-spacing: -.02em;
+}
+.eifel-scenery-head h3 em { color: var(--amber); font-style: normal; }
+.eifel-scenery-tag {
+  font-size: .72rem; color: var(--amber); letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 700;
+}
+.eifel-scenery-sub { color: var(--muted); font-size: .85rem; max-width: 48ch; margin-top: .4rem; }
+.eifel-scenery-week {
+  font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+  color: #e9c98a; display: flex; align-items: center; gap: .5rem;
+}
+.eifel-scenery-week::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--amber);
+  box-shadow: 0 0 8px 2px #f4a34066;
+}
+
+.eifel-scenery-track {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: 180px 180px;
+  gap: .8rem; border-radius: 16px; overflow: hidden;
+}
+.eifel-scenery-card {
+  position: relative; overflow: hidden; border-radius: 12px;
+  background: var(--panel); cursor: zoom-in; border: 1px solid var(--line);
+  opacity: 0; transform: scale(.98);
+  transition: opacity .6s ease var(--delay,0ms), transform .6s ease var(--delay,0ms), box-shadow .35s ease, border-color .35s ease;
+}
+.eifel-scenery-card.is-loaded { opacity: 1; transform: none; }
+.eifel-scenery-card img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s ease;
+  filter: saturate(.9) contrast(1.02);
+}
+.eifel-scenery-card:hover img { transform: scale(1.06); filter: saturate(1.08) contrast(1.05); }
+.eifel-scenery-card:hover { border-color: #f0b45555; box-shadow: 0 16px 40px -20px #000, 0 0 0 1px #f0b45522; }
+.eifel-scenery-card::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, #0a0705e8 0%, #0a070566 40%, transparent 70%);
+  pointer-events: none;
+}
+.eifel-scenery-card figcaption {
+  position: absolute; z-index: 2; inset: auto 0 0 0; padding: .8rem .7rem .6rem;
+  display: flex; flex-direction: column; gap: .15rem;
+}
+.eifel-scenery-card figcaption strong {
+  font-size: .82rem; line-height: 1.2; color: #fff6e6; overflow-wrap: break-word;
+}
+.eifel-scenery-card figcaption small { font-size: .64rem; color: #d9c6ab; }
+.eifel-scenery-badge {
+  position: absolute; top: .5rem; left: .5rem; z-index: 2;
+  font-size: .58rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: .25rem .5rem; border-radius: 999px;
+  background: #0b070599; color: #f3dcb4; border: 1px solid #ffffff22;
+  backdrop-filter: blur(6px);
+}
+.eifel-scenery-card.span-2 { grid-row: span 2; }
+.eifel-scenery-skeleton {
+  background: linear-gradient(100deg, #ffffff08 20%, #ffffff14 40%, #ffffff08 60%);
+  background-size: 220% 100%; animation: eifelShimmer 1.5s linear infinite;
+  border-radius: 12px;
+}
+@keyframes eifelShimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+
+.eifel-scenery-lightbox {
+  position: fixed; inset: 0; z-index: 60; display: grid; place-items: center;
+  padding: clamp(1rem, 4vw, 3rem); background: #05030299; backdrop-filter: blur(14px);
+}
+.eifel-scenery-lightbox[hidden] { display: none; }
+.eifel-scenery-lightbox-inner { max-width: min(1000px, 94vw); display: grid; gap: .9rem; justify-items: center; }
+.eifel-scenery-lightbox img { max-width: 100%; max-height: 74vh; border-radius: 16px; box-shadow: 0 40px 90px -40px #000; }
+.eifel-scenery-lightbox-caption { text-align: center; display: grid; gap: .3rem; }
+.eifel-scenery-lightbox-caption strong { font-size: 1.05rem; color: #fff6e6; }
+.eifel-scenery-lightbox-caption span { font-size: .82rem; color: #d9c6ab; }
+.eifel-scenery-lightbox-caption a { font-size: .82rem; color: #f0b455; }
+.eifel-scenery-lightbox-close {
+  position: absolute; top: 1rem; right: 1.2rem; width: 2.6rem; height: 2.6rem;
+  border-radius: 50%; border: 1px solid #ffffff2b; background: #0b070580;
+  color: #f5ece0; font-size: 1.1rem; cursor: pointer;
+}
+.eifel-scenery-lightbox-close:hover { background: #ffffff1a; }
+
+.eifel-scenery-source {
+  margin-top: 1.2rem; font-size: .72rem; line-height: 1.6; color: #a4917c; max-width: 80ch;
+}
+
+@media (max-width: 720px) {
+  .eifel-scenery-track { grid-template-columns: 1fr 1fr; grid-template-rows: 160px 160px 160px; }
+  .eifel-scenery-card.span-2 { grid-row: auto; grid-column: span 2; }
+}
+@media (max-width: 480px) {
+  .eifel-scenery-track { grid-template-columns: 1fr; grid-template-rows: repeat(5, 200px); }
+  .eifel-scenery-card.span-2 { grid-row: auto; grid-column: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eifel-scenery-card, .eifel-scenery-card img, .eifel-scenery-skeleton { transition: none; opacity: 1; transform: none; animation: none; }
+}

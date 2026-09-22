@@ -52,9 +52,20 @@ const lightboxMeta = document.querySelector("#scenery-lightbox-meta");
 const lightboxLink = document.querySelector("#scenery-lightbox-link");
 const lightboxClose = document.querySelector("#scenery-lightbox-close");
 
+/* Görseller haftalık döner: ISO hafta numarasına göre seçim yapılır,
+   böylece her hafta farklı bir seçki gösterilir. */
+function isoWeek(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const day = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - day);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+}
+
 const today = new Date();
-const dayIndex = Math.floor(Date.now() / 86400000);
-dateLine.textContent = "Günün seçkisi · " + today.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
+const weekIndex = isoWeek(today);
+const dayIndex = weekIndex;
+dateLine.textContent = "Haftanın seçkisi · " + today.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }) + " (Hafta " + weekIndex + ")";
 
 const stripTags = value => String(value || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 
@@ -189,7 +200,7 @@ async function renderScenery(key) {
     return;
   }
   items.forEach((item, index) => grid.append(card(item, index)));
-  statusLine.textContent = group.tagline + " Bugün için " + items.length + " görsel.";
+  statusLine.textContent = group.tagline + " Bu hafta için " + items.length + " görsel.";
 }
 
 tabs.forEach(tab => tab.addEventListener("click", () => {

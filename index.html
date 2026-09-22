@@ -26,6 +26,7 @@
     <meta name="twitter:description" content="Monschau-Imgenbroich'te döner, kebap, pizza ve ızgara." />
     <meta name="twitter:image" content="public/images/restaurant-photo-6.png" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="eifel-widget.css" />
     <link rel="icon" type="image/svg+xml" href="public/images/favicon.svg" />
     <link rel="apple-touch-icon" href="public/images/favicon.svg" />
     <link rel="shortcut icon" href="public/images/favicon.svg" />
@@ -176,12 +177,36 @@
         <div class="section-kicker">01 / <span data-i18n="storyKicker">Hik yemiz</span></div>
         <div class="intro-grid">
           <div><h2 data-i18n="storyTitle">Eifel manzarası,<br /><em>Anadolu ateşi.</em></h2></div>
-          <div><p data-i18n="storyCopy">Eifeler Kebaphaus, Monschau'da iyi yemeğin ve iyi karşılanmanın adresi. Her tabağı özenle, bol lezzetle ve sizi yeniden görmek isteyerek hazırlıyoruz.</p><a class="under-link" href="https://www.monschau.de/en/" target="_blank" rel="noopener" data-i18n="discover">Monschau'yu ke fet ↗</a></div>
+          <div><p data-i18n="storyCopy">Eifeler Kebaphaus, Monschau'da iyi yemeğin ve iyi karşılanmanın adresi. Her tabağı özenle, bol lezzetle ve sizi yeniden görmek isteyerek hazırlıyoruz.</p></div>
         </div>
         <div class="feature-cards">
           <article class="feature-card"><span class="feature-icon">🔥</span><h3 data-i18n="feature1Title">Köz ateşi</h3><p data-i18n="feature1Copy">Döner ve ızgarada ateşin gerçek aroması.</p></article>
           <article class="feature-card"><span class="feature-icon">👏</span><h3 data-i18n="feature2Title">Deneyimli eller</h3><p data-i18n="feature2Copy">Her siparişte aynı özen, her ziyarette aynı gülümseme.</p></article>
           <article class="feature-card"><span class="feature-icon">🚗</span><h3 data-i18n="feature3Title">Kolay ulaşım</h3><p data-i18n="feature3Copy">25 park yeri ile yolculuğunuzun keyfi bölünmesin.</p></article>
+        </div>
+
+        <div class="eifel-scenery" id="eifel-scenery" aria-label="Eifel ve Monschau manzara köşesi">
+          <div class="eifel-scenery-head">
+            <div>
+              <span class="eifel-scenery-tag">Eifel manzarası · Anadolu ateşi</span>
+              <h3>Monschau'nun <em>soluk alan yüzü.</em></h3>
+              <p class="eifel-scenery-sub">Restoranımızın kapısındaki Eifel vadilerinin ve Monschau'nun tarihî sokaklarının haftalık seçkisi. Telifsiz, lisanslı görseller Wikimedia Commons üzerinden gösterilir.</p>
+            </div>
+            <span class="eifel-scenery-week" id="eifel-scenery-week">Haftalık seçki yükleniyor…</span>
+          </div>
+          <div class="eifel-scenery-track" id="eifel-scenery-track" aria-live="polite"></div>
+          <p class="eifel-scenery-status" id="eifel-scenery-status" role="status" aria-live="polite">Eifel & Monschau manzaraları hazırlanıyor…</p>
+          <div class="eifel-scenery-lightbox" id="eifel-scenery-lightbox" role="dialog" aria-modal="true" aria-labelledby="eifel-scenery-lightbox-title" hidden>
+            <button class="eifel-scenery-lightbox-close" id="eifel-scenery-lightbox-close" type="button" aria-label="Kapat">✕</button>
+            <div class="eifel-scenery-lightbox-inner">
+              <img id="eifel-scenery-lightbox-image" alt="" />
+              <div class="eifel-scenery-lightbox-caption">
+                <strong id="eifel-scenery-lightbox-title"></strong>
+                <span id="eifel-scenery-lightbox-meta"></span>
+                <a id="eifel-scenery-lightbox-link" href="#" target="_blank" rel="noopener">Wikimedia Commons kaynak sayfası ↗</a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -337,7 +362,7 @@
       </section>
     </main>
 
-    <footer id="contact"><div class="shell footer-grid"><div><a class="brand" href="#top"><span class="logo-option logo-option-skewer" aria-hidden="true"><svg viewBox="0 0 48 48"><path class="skewer-metal" d="M24 4v40" /><path class="skewer-cap" d="M20 7h8v2h-8zM19 40h10v2H19z" /><path class="skewer-meat" d="M14 13c2-2 18-2 20 0l-1 5c-3 2-15 2-18 0zm-1 6c3-2 19-2 22 0l-1 5c-4 2-16 2-20 0zm1 7c3-2 17-2 20 0l-2 5c-4 2-12 2-16 0zm3 7c3-1 11-1 14 0l-2 5c-3 2-7 2-10 0z" /><path class="skewer-highlight" d="M15 16c5-2 12-2 18 0M14 22c6-2 14-2 20 0M16 29c5-1 11-1 16 0" /></svg></span><span><strong>Eifeler</strong><small>Kebaphaus · Monschau</small></span></a><p class="footer-note" data-i18n="footerNote">Döner, ızgara ve sıcak bir hoş geldiniz.</p></div><div><h3 data-i18n="contactTitle">İletişim</h3><a href="tel:+4915175055163">+49 1517 5055163</a><a href="https://wa.me/4915175055163" target="_blank" rel="noopener" data-i18n="whatsappLink">WhatsApp'tan yazın</a><span>Grünentalstraße 2, 52156 Monschau-Imgenbroich</span></div><div><h3 data-i18n="hoursHeading">Çalışma saatleri</h3><div class="hours-card"><strong data-i18n="hoursWeekday">Salı - Pazar · 12:00 - 21:00</strong><span data-i18n="hoursWeekend">Cumartesi - Pazar · 12:00 - 21:00</span><em data-i18n="hoursMonday">Pazartesi kapalı</em></div></div><div><h3 data-i18n="hoursTitle">Bizi değerlendirin</h3><a class="scenic-link" href="landscapes.html" data-i18n="scenicLink">Manzara köşesi ↗</a><a class="social-link" href="https://www.instagram.com/eifelerkebabhaus/" target="_blank" rel="noopener" aria-label="Eifeler Kebaphaus Instagram" data-i18n="instagramLink">Instagram @eifelerkebabhaus</a></div></div><div class="admin-entry shell"><span data-i18n="adminEntry">Yönetici girişi</span><button id="admin-login-open" type="button" data-i18n="adminLoginBtn">Giriş yap</button></div><div class="shell footer-bottom"><span>© 2026 Eifeler Kebaphaus</span><a href="https://www.monschau.de/en/" target="_blank" rel="noopener" data-i18n="monschauLink">Monschau turizmi ↗</a></div></footer>
+    <footer id="contact"><div class="shell footer-grid"><div><a class="brand" href="#top"><span class="logo-option logo-option-skewer" aria-hidden="true"><svg viewBox="0 0 48 48"><path class="skewer-metal" d="M24 4v40" /><path class="skewer-cap" d="M20 7h8v2h-8zM19 40h10v2H19z" /><path class="skewer-meat" d="M14 13c2-2 18-2 20 0l-1 5c-3 2-15 2-18 0zm-1 6c3-2 19-2 22 0l-1 5c-4 2-16 2-20 0zm1 7c3-2 17-2 20 0l-2 5c-4 2-12 2-16 0zm3 7c3-1 11-1 14 0l-2 5c-3 2-7 2-10 0z" /><path class="skewer-highlight" d="M15 16c5-2 12-2 18 0M14 22c6-2 14-2 20 0M16 29c5-1 11-1 16 0" /></svg></span><span><strong>Eifeler</strong><small>Kebaphaus · Monschau</small></span></a><p class="footer-note" data-i18n="footerNote">Döner, ızgara ve sıcak bir hoş geldiniz.</p></div><div><h3 data-i18n="contactTitle">İletişim</h3><a href="tel:+4915175055163">+49 1517 5055163</a><a href="https://wa.me/4915175055163" target="_blank" rel="noopener" data-i18n="whatsappLink">WhatsApp'tan yazın</a><span>Grünentalstraße 2, 52156 Monschau-Imgenbroich</span></div><div><h3 data-i18n="hoursHeading">Çalışma saatleri</h3><div class="hours-card"><strong data-i18n="hoursWeekday">Salı - Pazar · 12:00 - 21:00</strong><span data-i18n="hoursWeekend">Cumartesi - Pazar · 12:00 - 21:00</span><em data-i18n="hoursMonday">Pazartesi kapalı</em></div></div><div><h3 data-i18n="hoursTitle">Bizi değerlendirin</h3><a class="scenic-link" href="landscapes.html" data-i18n="scenicLink">Manzara köşesi ↗</a><a class="social-link" href="https://www.instagram.com/eifelerkebabhaus/" target="_blank" rel="noopener" aria-label="Eifeler Kebaphaus Instagram" data-i18n="instagramLink">Instagram @eifelerkebabhaus</a></div></div><div class="admin-entry shell"><span data-i18n="adminEntry">Yönetici girişi</span><button id="admin-login-open" type="button" data-i18n="adminLoginBtn">Giriş yap</button></div><div class="shell footer-bottom"><span>© 2026 Eifeler Kebaphaus</span></div></footer>
     <div class="admin-modal" id="admin-login-modal" hidden><div class="admin-panel" role="dialog" aria-modal="true" aria-labelledby="admin-title"><button class="admin-close" id="admin-login-close" type="button" aria-label="Kapat">×</button><span class="section-kicker" data-i18n="adminArea">YÖNETİCİ ALANI</span><h2 id="admin-title" data-i18n="adminTitle">Google ile yönetici girişi</h2><p id="admin-login-intro" data-i18n="adminIntro">Yalnızca yetkili Google hesabı yönetici olabilir. Giriş Google üzerinde yapılır; şifreniz bu siteye hiç girilmez.</p><button class="button admin-submit" id="admin-github-signin" type="button" data-i18n="adminSignIn">Google ile giriş yap</button><button class="button admin-submit" id="admin-signout" type="button" hidden data-i18n="adminSignOut">Çıkış yap</button><p id="admin-login-status" role="status" aria-live="polite"></p></div></div>
     <div class="mobile-cta" aria-label="Hızlı işlemler"><a class="cta-call" href="tel:+4915175055163" aria-label="Sipariş için ara"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span data-i18n="ctaCall">Ara</span></a><a href="https://wa.me/4915175055163" target="_blank" rel="noopener" aria-label="WhatsApp"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span data-i18n="ctaWhatsApp">WhatsApp</span></a><a href="https://www.google.com/maps?um=1&ie=UTF-8&fb=1&gl=tr&sa=X&geocode=KU1FtS_Bfr9HMaOUfRGIxMKC&daddr=Gr%C3%BCnentalstra%C3%9Fe+2,+52156+Monschau-Imgenbroich,+Almanya" target="_blank" rel="noopener" aria-label="Yol tarifi"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></span><span data-i18n="ctaDirections">Yol tarifi</span></a></div>
 
@@ -347,5 +372,6 @@
     <script src="admin-auth.js"></script>
     <script src="i18n.js"></script>
     <script src="script.js"></script>
+    <script src="eifel-widget.js"></script>
 </body>
 </html>
