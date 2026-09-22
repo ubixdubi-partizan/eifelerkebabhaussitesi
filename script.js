@@ -143,6 +143,7 @@
   const radioAudio = document.getElementById("radio-audio");
   const radioPlayBtn = document.getElementById("radio-play-btn");
   const radioChannelBtn = document.getElementById("radio-channel-btn");
+  const radioPrevBtn = document.getElementById("radio-prev-btn");
   const radioChannelLabel = document.getElementById("radio-channel-label");
   const radioStationName = document.getElementById("radio-station-name");
   const radioStationDesc = document.getElementById("radio-station-desc");
@@ -168,8 +169,12 @@
       }
     }
 
-    function switchChannel() {
-      currentChannel = (currentChannel + 1) % RADIO_STATIONS.length;
+    function switchChannel(direction) {
+      if (typeof direction === 'number') {
+        currentChannel = direction;
+      } else {
+        currentChannel = (currentChannel + 1) % RADIO_STATIONS.length;
+      }
       const station = RADIO_STATIONS[currentChannel];
       radioAudio.src = station.url;
       updateStationDisplay();
@@ -210,6 +215,24 @@
     radioChannelBtn.addEventListener("click", () => {
       switchChannel();
     });
+
+    if (radioPrevBtn) {
+      radioPrevBtn.addEventListener("click", () => {
+        if (currentChannel <= 0) {
+          currentChannel = RADIO_STATIONS.length - 1;
+        } else {
+          currentChannel = currentChannel - 1;
+        }
+        const station = RADIO_STATIONS[currentChannel];
+        radioAudio.src = station.url;
+        updateStationDisplay();
+        if (isPlaying) {
+          radioAudio.play().catch(() => {
+            if (radioStationDesc) radioStationDesc.textContent = "Stream yüklenemedi, tekrar deneyin";
+          });
+        }
+      });
+    }
 
     radioAudio.addEventListener("error", () => {
       if (radioStationDesc) radioStationDesc.textContent = "Stream yüklenemedi, başka kanal deneyin";

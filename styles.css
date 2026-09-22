@@ -71,8 +71,8 @@ body{background-color:#2d1311;background-image:radial-gradient(circle at 15% 21%
 
 /* === RADIO PLAYER STYLES === */
 .radio-controls{display:flex;align-items:center;gap:.7rem;margin-top:1.2rem}
-.radio-play-btn,.radio-channel-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--amber);background:linear-gradient(145deg,#2b1a12,#160e0c);color:var(--amber);font-size:1.1rem;cursor:pointer;display:grid;place-items:center;transition:all .2s;flex-shrink:0}
-.radio-play-btn:hover,.radio-channel-btn:hover{background:var(--amber);color:#241108;transform:scale(1.05)}
+.radio-prev-btn,.radio-play-btn,.radio-channel-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--amber);background:linear-gradient(145deg,#2b1a12,#160e0c);color:var(--amber);font-size:1.1rem;cursor:pointer;display:grid;place-items:center;transition:all .2s;flex-shrink:0}
+.radio-prev-btn:hover,.radio-play-btn:hover,.radio-channel-btn:hover{background:var(--amber);color:#241108;transform:scale(1.05)}
 .radio-play-btn.playing{background:linear-gradient(145deg,#ef4f27,#f4a340);color:#241108;border-color:transparent}
 .radio-channel-label{color:var(--muted);font-size:.75rem;font-weight:600;letter-spacing:.05em}
 

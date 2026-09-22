@@ -1088,11 +1088,11 @@ const I18N_LANG_CODES = {
 // Radio stations - SomaFM (copyright-free, listener-supported internet radio)
 const RADIO_STATIONS = [
   { name: "SomaFM Groove Salad", url: "https://ice1.somafm.com/groovesalad-128-mp3", desc: "Chillout ambient downtempo" },
-  { name: "SomaFM Space Station", url: "https://ice1.somafm.com/spacestation-128-mp3", desc: "Spacey ambient electronic" },
-  { name: "SomaFM DEF CON", url: "https://ice1.somafm.com/defcon-128-mp3", desc: "Hacker music" },
-  { name: "SomaFM Lush", url: "https://ice1.somafm.com/lush-128-mp3", desc: "Sensuous female vocals" },
-  { name: "SomaFM Drone Zone", url: "https://ice1.somafm.com/dronezone-128-mp3", desc: "Ambient drone" },
-  { name: "SomaFM Underground 80s", url: "https://ice1.somafm.com/u80s-128-mp3", desc: "Alternative 80s" }
+  { name: "SomaFM Deep Space One", url: "https://ice4.somafm.com/deepspaceone-128-mp3", desc: "Deep ambient and space music" },
+  { name: "SomaFM Drone Zone", url: "https://ice1.somafm.com/dronezone-128-mp3", desc: "Ambient drone, atmospheric textures" },
+  { name: "SomaFM Lush", url: "https://ice1.somafm.com/lush-128-mp3", desc: "Sensuous mellow female vocals" },
+  { name: "SomaFM Beat Blender", url: "https://ice5.somafm.com/beatblender-128-mp3", desc: "Downtempo chill, deep-house blend" },
+  { name: "SomaFM Groove Salad Classic", url: "https://ice6.somafm.com/gsclassic-128-mp3", desc: "Classic ambient downtempo beats" }
 ];
 
 // Apply language to all elements with data-i18n and data-menu-i18n
