@@ -26,6 +26,9 @@
     <meta name="twitter:description" content="Monschau-Imgenbroich'te döner, kebap, pizza ve ızgara." />
     <meta name="twitter:image" content="public/images/restaurant-photo-6.png" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="eifel-widget.css" />
     <link rel="icon" type="image/svg+xml" href="public/images/favicon.svg" />
     <link rel="apple-touch-icon" href="public/images/favicon.svg" />
@@ -127,6 +130,12 @@
           <a href="#contact" data-i18n="navContact">İletişim</a>
         </div>
         <div class="nav-actions">
+          <div class="top-radio" id="top-radio" aria-label="Canlı radyo oynatıcı">
+            <button class="top-radio-btn top-radio-play" id="top-radio-play" type="button" aria-label="Radyo oynat/durdur" aria-pressed="false">▶</button>
+            <span class="top-radio-name" id="top-radio-name">DLF</span>
+            <button class="top-radio-btn top-radio-next" id="top-radio-next" type="button" aria-label="Sonraki kanal">⏭</button>
+            <audio id="top-radio-audio" preload="none"></audio>
+          </div>
           <button class="admin-notification" id="admin-notification" type="button" aria-label="Yönetici bildirimleri" hidden>🔔<span id="admin-notification-count" aria-hidden="true">0</span></button>
           <div class="language-switcher" aria-label="Dil se imi">
             <button class="language-button" type="button" aria-expanded="false">TR <span aria-hidden="true">▾</span></button>

@@ -140,3 +140,62 @@ document.querySelectorAll("[data-menu-i18n]").forEach(element => {
 
 /* Statik metinler kaynak dosyada UTF-8 olarak onarildi; runtime yamasi kaldirildi. */
 
+/* ===== Üst bar radyo oynatıcı ===== */
+(function(){
+  var stations=[
+    {name:"DLF",url:"https://st01.sslstream.dlf.de/dlf/01/128/mp3/stream.mp3"},
+    {name:"WDR 2",url:"https://wdr-2-live.icecastssl.wdr.de/wdr/2/live/mp3/128/stream.mp3"},
+    {name:"Bayern 1",url:"https://dispatcher.rndfnk.com/br/br1/obb"},
+    {name:"SWR3",url:"https://swr-swr3-live.cast.addradio.de/swr/swr3/live/mp3/128/stream.mp3"},
+    {name:"NDR 2",url:"https://ndr-ndr2-niedersachsen.cast.addradio.de/ndr/ndr2/niedersachsen/mp3/128/stream.mp3"}
+  ];
+  var idx=0;
+  var audio=document.getElementById('top-radio-audio');
+  var playBtn=document.getElementById('top-radio-play');
+  var nextBtn=document.getElementById('top-radio-next');
+  var nameEl=document.getElementById('top-radio-name');
+  if(!audio||!playBtn||!nextBtn||!nameEl) return;
+
+  function setStation(i){
+    idx=i%stations.length;
+    var wasPlaying=playBtn.classList.contains('playing');
+    audio.src=stations[idx].url;
+    nameEl.textContent=stations[idx].name;
+    if(wasPlaying){ audio.play().catch(function(){}); }
+  }
+
+  playBtn.addEventListener('click',function(){
+    if(audio.paused){
+      if(!audio.src) audio.src=stations[idx].url;
+      audio.play().then(function(){
+        playBtn.textContent='⏸';
+        playBtn.classList.add('playing');
+        playBtn.setAttribute('aria-pressed','true');
+      }).catch(function(){
+        playBtn.textContent='⚠';
+        setTimeout(function(){playBtn.textContent='▶';},2000);
+      });
+    } else {
+      audio.pause();
+      playBtn.textContent='▶';
+      playBtn.classList.remove('playing');
+      playBtn.setAttribute('aria-pressed','false');
+    }
+  });
+
+  nextBtn.addEventListener('click',function(){
+    setStation(idx+1);
+  });
+
+  audio.addEventListener('error',function(){
+    playBtn.textContent='⚠';
+    nameEl.textContent='Hata';
+    setTimeout(function(){
+      playBtn.textContent='▶';
+      nameEl.textContent=stations[idx].name;
+    },3000);
+  });
+
+  nameEl.textContent=stations[0].name;
+})();
+
