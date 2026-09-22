@@ -3,9 +3,9 @@
    Kurulum adımları README.md > "Yönetici girişi" bölümünde. */
 window.ADMIN_CONFIG = {
   // Supabase projenizin URL'si, örn. "https://abcdefgh.supabase.co"
-  supabaseUrl: "",
+  supabaseUrl: "https://uwdwavstozljufbwgftr.supabase.co",
   // Supabase > Project Settings > API > anon public key (gizli değildir, tarayıcıda kullanılır)
-  supabaseAnonKey: "",
+  supabaseAnonKey: "sb_publishable_fLz1lc9XRv1DWN1H3Vrz7w_YwL5sjio",
   // Yönetici izni verilecek GitHub kullanıcı adları (küçük harf). Sadece bunlar yönetici olur.
   allowedGithubLogins: ["ubixdubi"]
 };
